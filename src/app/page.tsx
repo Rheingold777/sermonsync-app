@@ -48,24 +48,62 @@ export default function Home() {
             </p>
           </div>
           
-          {/* Phone Mockup */}
+          {/* Phone Mockup - iPhone Style */}
           <div className="relative">
-            <div className="bg-navy rounded-[3rem] p-3 shadow-2xl max-w-[320px] mx-auto">
-              <div className="bg-white rounded-[2.5rem] p-6 min-h-[500px]">
-                <div className="text-xs text-gray-400 text-center mb-4">Monday, 9:30 AM</div>
-                <div className="bg-navy/5 rounded-2xl p-4 mb-3">
-                  <p className="text-sm text-navy font-medium mb-1">New Life Church</p>
-                  <p className="text-sm text-navy/80">
-                    &quot;Yesterday&apos;s message reminded us that God&apos;s grace isn&apos;t just for our past mistakes — 
-                    it&apos;s for our present struggles and future fears too. 🙏&quot;
-                  </p>
+            <div className="bg-navy rounded-[3rem] p-2 shadow-2xl max-w-[300px] mx-auto relative">
+              {/* Side buttons */}
+              <div className="absolute -left-1 top-24 w-1 h-8 bg-navy rounded-l-lg"></div>
+              <div className="absolute -left-1 top-36 w-1 h-12 bg-navy rounded-l-lg"></div>
+              <div className="absolute -left-1 top-52 w-1 h-12 bg-navy rounded-l-lg"></div>
+              <div className="absolute -right-1 top-32 w-1 h-16 bg-navy rounded-r-lg"></div>
+              
+              <div className="bg-white rounded-[2.5rem] overflow-hidden">
+                {/* Dynamic Island / Notch */}
+                <div className="bg-white pt-3 pb-2 px-6">
+                  <div className="flex items-center justify-between text-[10px] text-gray-500 mb-2">
+                    <span className="font-medium">9:41</span>
+                    <div className="w-24 h-7 bg-black rounded-full mx-auto"></div>
+                    <div className="flex items-center gap-1">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73s3.15.25 4.6.73v3.1c0 .4.23.74.56.9.98.49 1.87 1.12 2.67 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/></svg>
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-gold/10 rounded-2xl p-4">
-                  <p className="text-sm text-navy font-medium mb-1">🇪🇸 En Español</p>
-                  <p className="text-sm text-navy/80">
-                    &quot;El mensaje de ayer nos recordó que la gracia de Dios no es solo para nuestros 
-                    errores pasados...&quot;
-                  </p>
+                
+                {/* Messages App Header */}
+                <div className="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <p className="text-xs text-blue-500 text-center">Messages</p>
+                </div>
+                
+                {/* Message Content */}
+                <div className="p-4 min-h-[420px] bg-white">
+                  <div className="text-[10px] text-gray-400 text-center mb-3">Monday, 9:30 AM</div>
+                  
+                  {/* English Message Bubble */}
+                  <div className="bg-gray-100 rounded-2xl rounded-tl-sm p-3 mb-3 max-w-[90%]">
+                    <p className="text-xs text-navy font-semibold mb-1">New Life Church</p>
+                    <p className="text-xs text-navy/80 leading-relaxed">
+                      &quot;Yesterday&apos;s message reminded us that God&apos;s grace isn&apos;t just for our past mistakes — 
+                      it&apos;s for our present struggles and future fears too. 🙏&quot;
+                    </p>
+                  </div>
+                  
+                  {/* Spanish Message Bubble */}
+                  <div className="bg-gold/20 rounded-2xl rounded-tl-sm p-3 max-w-[90%]">
+                    <p className="text-xs text-navy font-semibold mb-1">🇪🇸 En Español</p>
+                    <p className="text-xs text-navy/80 leading-relaxed">
+                      &quot;El mensaje de ayer nos recordó que la gracia de Dios no es solo para nuestros 
+                      errores pasados — es para nuestras luchas presentes...&quot;
+                    </p>
+                  </div>
+                  
+                  {/* Delivered indicator */}
+                  <p className="text-[9px] text-gray-400 text-right mt-2">Delivered</p>
+                </div>
+                
+                {/* Home Indicator */}
+                <div className="pb-2 pt-1">
+                  <div className="w-32 h-1 bg-gray-300 rounded-full mx-auto"></div>
                 </div>
               </div>
             </div>
