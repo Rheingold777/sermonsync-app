@@ -1,167 +1,104 @@
-import Link from "next/link";
-import { 
-  Upload, 
-  MessageSquare, 
-  Users, 
-  TrendingUp,
-  ArrowRight,
-  Clock
-} from "lucide-react";
+'use client'
+
+import Link from 'next/link'
 
 export default function DashboardPage() {
-  // TODO: Fetch real data
   const stats = {
-    totalSent: 156,
-    contacts: 42,
-    sermons: 8,
-    deliveryRate: 98.2,
-  };
+    totalContacts: 47,
+    sermonsThisMonth: 3,
+    messagesDelivered: 141,
+    openRate: '98%',
+  }
 
   const recentSermons = [
-    { 
-      id: "1", 
-      title: "The Power of Persistent Prayer", 
-      date: "Mar 3, 2026",
-      status: "sent",
-      sentTo: 42
-    },
-    { 
-      id: "2", 
-      title: "Walking by Faith", 
-      date: "Feb 25, 2026",
-      status: "sent",
-      sentTo: 40
-    },
-    { 
-      id: "3", 
-      title: "The Heart of Worship", 
-      date: "Feb 18, 2026",
-      status: "sent",
-      sentTo: 38
-    },
-  ];
+    { id: 1, title: 'The Power of Grace', date: 'Mar 2, 2026', status: 'delivered', contacts: 47 },
+    { id: 2, title: 'Walking in Faith', date: 'Feb 23, 2026', status: 'delivered', contacts: 45 },
+    { id: 3, title: 'Love Your Neighbor', date: 'Feb 16, 2026', status: 'delivered', contacts: 44 },
+  ]
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="font-serif text-3xl text-navy">Good morning, Pastor</h1>
-          <p className="text-gray-600 mt-1">Here's how your church engagement is looking</p>
-        </div>
-        <Link href="/dashboard/upload" className="btn-primary flex items-center gap-2">
-          <Upload size={20} />
-          New Sermon
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-3xl font-serif text-navy">Dashboard</h1>
+        <Link href="/dashboard/upload" className="btn-primary">
+          Upload New Sermon
         </Link>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid md:grid-cols-4 gap-6 mb-8">
         <div className="card">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center">
-              <MessageSquare className="text-gold" size={24} />
-            </div>
-            <div>
-              <div className="text-2xl font-semibold text-navy">{stats.totalSent}</div>
-              <div className="text-sm text-gray-600">Messages Sent</div>
-            </div>
-          </div>
+          <p className="text-sm text-navy/70 mb-1">Total Contacts</p>
+          <p className="text-3xl font-serif text-navy">{stats.totalContacts}</p>
         </div>
-
         <div className="card">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <TrendingUp className="text-green-600" size={24} />
-            </div>
-            <div>
-              <div className="text-2xl font-semibold text-navy">{stats.deliveryRate}%</div>
-              <div className="text-sm text-gray-600">Delivery Rate</div>
-            </div>
-          </div>
+          <p className="text-sm text-navy/70 mb-1">Sermons This Month</p>
+          <p className="text-3xl font-serif text-navy">{stats.sermonsThisMonth}</p>
         </div>
-
         <div className="card">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Users className="text-blue-600" size={24} />
-            </div>
-            <div>
-              <div className="text-2xl font-semibold text-navy">{stats.contacts}</div>
-              <div className="text-sm text-gray-600">Active Contacts</div>
-            </div>
-          </div>
+          <p className="text-sm text-navy/70 mb-1">Messages Delivered</p>
+          <p className="text-3xl font-serif text-navy">{stats.messagesDelivered}</p>
         </div>
-
         <div className="card">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Clock className="text-purple-600" size={24} />
-            </div>
-            <div>
-              <div className="text-2xl font-semibold text-navy">{stats.sermons}</div>
-              <div className="text-sm text-gray-600">Sermons This Month</div>
-            </div>
-          </div>
+          <p className="text-sm text-navy/70 mb-1">Open Rate</p>
+          <p className="text-3xl font-serif text-gold">{stats.openRate}</p>
         </div>
       </div>
 
-      {/* Recent Sermons */}
-      <div className="card">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="font-serif text-xl text-navy">Recent Sermons</h2>
-          <Link href="/dashboard/sermons" className="text-gold hover:underline flex items-center gap-1">
-            View all <ArrowRight size={16} />
+      <div className="card mb-8">
+        <h2 className="text-xl font-serif text-navy mb-4">Quick Actions</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          <Link href="/dashboard/upload" className="p-4 bg-navy/5 rounded-lg hover:bg-navy/10 transition-colors">
+            <span className="text-2xl mb-2 block">📤</span>
+            <p className="font-medium text-navy">Upload Sermon</p>
+            <p className="text-sm text-navy/70">Drop your notes and we'll do the rest</p>
+          </Link>
+          <Link href="/dashboard/contacts" className="p-4 bg-navy/5 rounded-lg hover:bg-navy/10 transition-colors">
+            <span className="text-2xl mb-2 block">👥</span>
+            <p className="font-medium text-navy">Manage Contacts</p>
+            <p className="text-sm text-navy/70">Add or import congregation members</p>
+          </Link>
+          <Link href="/dashboard/settings" className="p-4 bg-navy/5 rounded-lg hover:bg-navy/10 transition-colors">
+            <span className="text-2xl mb-2 block">⚙️</span>
+            <p className="font-medium text-navy">Settings</p>
+            <p className="text-sm text-navy/70">Update preferences and billing</p>
           </Link>
         </div>
+      </div>
 
-        <div className="space-y-4">
-          {recentSermons.map((sermon) => (
-            <Link 
-              key={sermon.id}
-              href={`/dashboard/sermons/${sermon.id}`}
-              className="flex items-center justify-between p-4 bg-cream rounded-lg hover:bg-cream-200 transition-colors"
-            >
-              <div>
-                <h3 className="font-medium text-navy">{sermon.title}</h3>
-                <p className="text-sm text-gray-600">{sermon.date}</p>
-              </div>
-              <div className="text-right">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  Sent
-                </span>
-                <p className="text-sm text-gray-600 mt-1">to {sermon.sentTo} people</p>
-              </div>
-            </Link>
-          ))}
+      <div className="card">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-serif text-navy">Recent Sermons</h2>
+          <Link href="/dashboard/sermons" className="text-gold text-sm hover:underline">
+            View all →
+          </Link>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="text-left text-sm text-navy/70 border-b border-gray-100">
+                <th className="pb-3 font-medium">Title</th>
+                <th className="pb-3 font-medium">Date</th>
+                <th className="pb-3 font-medium">Status</th>
+                <th className="pb-3 font-medium">Delivered</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {recentSermons.map((sermon) => (
+                <tr key={sermon.id} className="hover:bg-gray-50">
+                  <td className="py-4 font-medium text-navy">{sermon.title}</td>
+                  <td className="py-4 text-navy/70">{sermon.date}</td>
+                  <td className="py-4">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      ✓ {sermon.status}
+                    </span>
+                  </td>
+                  <td className="py-4 text-navy/70">{sermon.contacts} messages</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      {/* Quick Actions */}
-      <div className="grid md:grid-cols-2 gap-4 mt-6">
-        <Link href="/dashboard/upload" className="card hover:border-gold transition-colors group">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center group-hover:bg-gold/30 transition-colors">
-              <Upload className="text-gold" size={24} />
-            </div>
-            <div>
-              <h3 className="font-semibold text-navy">Upload New Sermon</h3>
-              <p className="text-sm text-gray-600">Drop your notes and generate a recap</p>
-            </div>
-          </div>
-        </Link>
-
-        <Link href="/dashboard/contacts" className="card hover:border-gold transition-colors group">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-              <Users className="text-blue-600" size={24} />
-            </div>
-            <div>
-              <h3 className="font-semibold text-navy">Manage Contacts</h3>
-              <p className="text-sm text-gray-600">Add members or import from CSV</p>
-            </div>
-          </div>
-        </Link>
-      </div>
     </div>
-  );
+  )
 }
